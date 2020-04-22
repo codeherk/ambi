@@ -438,6 +438,9 @@ function loadClient(config) {
         console.log("[loadClient] config NOT provided");
         try {
             console.log("[loadClient] try");
+            if (!fs.existsSync("./config")){
+                fs.mkdirSync("./config");
+            }
             let rawdata = fs.readFileSync('./config/config.json');
             profile = JSON.parse(rawdata);
             console.log(`[loadClient] profile`, profile);

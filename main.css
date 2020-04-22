@@ -1,8 +1,19 @@
 body {
   background-color: #666666;
-  height: 100vh;
+  /* height: 100vh; */
   margin-top: 46px;
-  position: relative;
+  /* position: relative; */
+}
+body::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+body::-webkit-scrollbar-track {
+  background: #666666;        /* color of the tracking area */
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #444444;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 2px solid #666666;  /* creates padding around scroll thumb */
 }
 
 header {
