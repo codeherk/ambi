@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' https://cdn.jsdelivr.net/npm/@jaames/iro@5 'unsafe-inline'; script-src 'self' https://cdn.jsdelivr.net/npm/@jaames/iro@5 'unsafe-inline' 'unsafe-eval'" /> -->
+  <title>Hello World!</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+  <div id="app">
+
+    <header class="container-fluid p-0">
+      <div class="menu-button float-right">
+        <svg class="bi bi-x-square" width="1em" height="1em" viewBox="0 0 16 16" fill="white"
+          xmlns="http://www.w3.org/2000/svg" style="font-size: 18px;" v-on:click="close">
+          <path fill-rule="evenodd"
+            d="M14 1H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V2a1 1 0 00-1-1zM2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z"
+            clip-rule="evenodd" />
+          <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z"
+            clip-rule="evenodd" />
+          <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z"
+            clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="menu-button float-right">
+        <svg class="bi bi-square float-right" width="1em" height="1em" viewBox="0 0 16 16" fill="white"
+          xmlns="http://www.w3.org/2000/svg" style="font-size: 18px;" v-on:click="maximize">
+          <path fill-rule="evenodd"
+            d="M14 1H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V2a1 1 0 00-1-1zM2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z"
+            clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="menu-button float-right">
+        <svg class="bi bi-dash float-right" width="1em" height="1em" viewBox="0 0 16 16" fill="white"
+          xmlns="http://www.w3.org/2000/svg" style="font-size: 26px;" v-on:click="minimize">
+          <path fill-rule="evenodd" d="M3.5 8a.5.5 0 01.5-.5h8a.5.5 0 010 1H4a.5.5 0 01-.5-.5z" clip-rule="evenodd" />
+        </svg>
+      </div>
+    </header>
+    <div class="container mt-3">
+      <div class="row mb-2">
+        <div class="col">
+          <button type="button" class="btn btn-primary float-right" v-show="!show_profile"
+            v-on:click="toggleProfile">Profile</button>
+        </div>
+      </div>
+      <div class="row mb-2" v-show="show_profile">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <button type="button" class="btn btn-danger float-right" v-on:click="toggleProfile">Close</button>
+              <h5 class="card-title">Profile</h5>
+              <ul class="list-group list-group-flush" v-if="profile != null">
+                <li class="list-group-item">Username: {{profile.user.username}}</li>
+                <li class="list-group-item">Device type: {{profile.user.deviceType}}</li>
+                <li class="list-group-item">Create date: {{profile.user.created}}</li>
+                <li class="list-group-item">Last use date: {{profile.user.lastUsed}}</li>
+              </ul>
+              <button type="button" class="btn btn-danger float-right" v-if="profile != null"
+                v-on:click="deleteClient">Delete User</button>
+              <button type="button" class="btn btn-primary float-right" v-on:click="loadClient">New User</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mx-1">
+        <div class="col-12 card mb-3 light-widget">
+          <div class="card-body">
+            <div class="row mb-3">
+              <div class="col">
+                <h4 class="d-block">Lights
+                  <span v-on:click="fetchLights" class="fas fa-redo float-right"></span>
+                </h4>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-12 text-center" v-if="lights == null">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+              <div class="col-12 text-center" v-if="lights == false">
+                <div>No Lights</div>
+              </div>
+              <div class="col-12 text-center" v-if="message != null">
+                <div>{{ message }}</div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 mb-2" v-for="light in lights">
+                <div v-on:click="toggleLight(light)"
+                  v-bind:style="{'background-color': computeBG(light), 'color': light.reachable && light.on ? 'black' :'#cfb6ab'}"
+                  class="card light-card">
+                  <div class="card-body">
+                    <template v-if="light.reachable && light.on">
+                      <span class="d-block mb-2 fas fa-lightbulb fa-2x"></span>
+                      <h5 class="m-0">
+                        {{ light.name }}
+                      </h5>
+                      <span class="d-block">
+                        {{ calculateBrightness(light) }}%
+                      </span>
+                    </template>
+                    <template v-if="!light.reachable">
+                      <span class="mb-2 far fa-lightbulb fa-2x"></span>
+                      <span class="mb-2 fas fa-exclamation-circle fa-bounce fa-2x float-right" data-placement="top"
+                        title="Make sure that the light switch is on"></span>
+                      <h5 class="m-0">
+                        {{ light.name }}
+                      </h5>
+                      <span class="d-block">
+                        Not Reachable
+                      </span>
+                    </template>
+                    <template v-if="light.reachable && !light.on">
+                      <span class="d-block mb-2 far fa-lightbulb fa-2x"></span>
+                      <h5 class="m-0">
+                        {{ light.name }}
+                      </h5>
+                      <span class="d-block">
+                        Off
+                      </span>
+                    </template>
+                  </div>
+                  <!-- <a v-on:click="toggleLight" class="stretched-link"></a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="selected_light" class="card light-widget">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="row">
+                <div class="col">
+                  <h4>{{ selected_light.name }}</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col mt-5 py-5">
+                  <input id="slider" type="range" orient="vertical" min="0" max="100" />
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-8 col-sm-8 text-center" id="picker-container">
+              <div id="picker"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="card color-card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend"><span class="input-group-text">R</span></div>
+              <input type="text" class="form-control" id="red_value">
+              <span>Copy</span>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend"><span class="input-group-text">G</span></div>
+              <input type="text" class="form-control" id="green_value">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend"><span class="input-group-text">B</span></div>
+              <input type="text" class="form-control" id="blue_value">
+            </div>
+
+          </div>
+          <div class="col">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend"><span class="input-group-text">HEX</span></div>
+              <input type="text" class="form-control" id="hex_value">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    </div>
+
+  </div>
+
+
+  <!-- You can also require other files to run in this process -->
+  <script src="./renderer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+
+</body>
+
+</html>

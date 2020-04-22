@@ -1,0 +1,30 @@
+{
+  "name": "ambi",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "electron:serve": "nodemon --watch ./index.html --exec \"npm start\""
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^8.2.1",
+    "electron-rebuild": "^1.10.1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@jaames/iro": "^5.1.5",
+    "bootstrap": "^4.4.1",
+    "huejay": "^1.9.0"
+  }
+}

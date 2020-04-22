@@ -1,0 +1,221 @@
+body {
+  background-color: #666666;
+  height: 100vh;
+  margin-top: 46px;
+  position: relative;
+}
+
+header {
+  /* display: flow-root; */
+  height: 35px;
+  background-color: #343a40;
+  -webkit-app-region: drag;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+.menu-button{
+  padding-left: 20px;
+  padding-right: 20px;
+  height:100%;
+}
+
+.menu-button:hover{
+ background-color: #6c757d;
+}
+
+.bi{
+  -webkit-app-region: no-drag;
+  margin-top: 10px;
+}
+
+#picker-container {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.light-widget {
+  /* -webkit-app-region: no-drag; */
+  background-color: rgba(0, 0, 0, 0.75);
+  /* backdrop-filter: blur(2px); */
+  color: white;
+}
+
+.light-card {
+  /* background-color: rgba(255, 255, 255, 0.75); */
+  cursor: pointer;
+  /* backdrop-filter: blur(2px); */
+}
+
+.color-card {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#slider {
+  /* margin: auto; */
+  -webkit-appearance: none;
+  position: relative;
+  overflow: hidden;
+  height: 125px;
+  width: 300px;
+  cursor: pointer;
+  transform-origin: 75px 75px;
+  transform: rotate(-90deg);
+  /* margin: 0; */
+  margin-top: 70px;
+  /* margin-left: -2em; */
+  border-radius: 16px;
+}
+
+#slider:focus {
+  outline: none;
+  /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+::-webkit-slider-runnable-track {
+  background: #999999;
+  height: 125px;
+}
+
+/*
+* 1. Set to 0 width and remove border for a slider without a thumb
+*/
+::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* width: 20px;  */
+  width: 0px;
+  /* 1 */
+  height: 125px;
+  /* background: #fff; */
+  /* box-shadow: -100vw 0 0 100vw dodgerblue; */
+  /* border: 2px solid #999;*/
+  /* 1 */
+}
+
+
+::-moz-range-track {
+  height: 60px;
+  background: #ddd;
+}
+
+::-moz-range-thumb {
+  background: #fff;
+  height: 60px;
+  width: 20px;
+  border: 3px solid #999;
+  border-radius: 0 !important;
+  box-shadow: -100vw 0 0 100vw dodgerblue;
+  box-sizing: border-box;
+}
+
+/* ::-ms-fill-lower { 
+  background: dodgerblue;
+} */
+
+::-ms-thumb {
+  background: #fff;
+  border: 2px solid #999;
+  height: 60px;
+  width: 20px;
+  box-sizing: border-box;
+}
+
+::-ms-ticks-after {
+  display: none;
+}
+
+::-ms-ticks-before {
+  display: none;
+}
+
+::-ms-track {
+  background: #ddd;
+  color: transparent;
+  height: 60px;
+  border: none;
+}
+
+::-ms-tooltip {
+  display: none;
+}
+
+
+
+
+/* https://gist.github.com/gubi/8483199 */
+@-webkit-keyframes bounce {
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: -0.2em;
+  }
+
+  /* 70% { top: -0.3em; } */
+  100% {
+    top: 0;
+  }
+}
+
+@-moz-keyframes bounce {
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: -0.2em;
+  }
+
+  /* 70% { top: -0.3em; } */
+  100% {
+    top: 0;
+  }
+}
+
+@-o-keyframes bounce {
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: -0.2em;
+  }
+
+  /* 70% { top: -0.3em; } */
+  100% {
+    top: 0;
+  }
+}
+
+@-ms-keyframes bounce {
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: -0.2em;
+  }
+
+  /* 70% { top: -0.3em; } */
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: -0.2em;
+  }
+
+  /* 70% { top: -0.3em; } */
+  100% {
+    top: 0;
+  }
+}
