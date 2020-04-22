@@ -22,6 +22,12 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
+
+
+<!-- PROJECT LOGO -->
+
+# Ambi - Smart Light Widget
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -29,48 +35,14 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
+ <div align="center">
+    <img src="https://drive.google.com/uc?export=view&id=1vP2ezT5N2pmHGOlkdHyShWYJpyFvwp3e" alt="Product Screenshot" width="315" height="420" style="display: inline;">
+    <img src="https://drive.google.com/uc?export=view&id=1ZAF_YtpMR3b0d6RTAkyOzkbre8-o0XYe" alt="Product Screenshot" width="315" height="420" style="display: inline;">
+ </div>
 
-
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <a href="https://github.com/codeherk/ambi">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">Ambi</h3>
-
-  <p align="center">
-  Smart Light Widget
-  </p>
-</p>
-
-
-
-<!-- TABLE OF CONTENTS -->
-## Table of Contents
-
-* [About the Project](#about-the-project)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [License](#license)
-* [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
-
-
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-![Product Screenshot](https://imgur.com/6cAmIID)
-![Product Screenshot](https://imgur.com/gJi6day)
-
-This a project that I personally worked on due to bordem in quanrtine. After hours of effort, my interest in this project peaked and rather than keep it to myself, I'm sharing it with others!
+<!-- ![Product Screenshot](https://drive.google.com/open?id=1vP2ezT5N2pmHGOlkdHyShWYJpyFvwp3e)
+![Product Screenshot](https://drive.google.com/uc?export=view&id=1ZAF_YtpMR3b0d6RTAkyOzkbre8-o0XYe) -->
+This a project that I personally worked on due to bordem in quarantine. After hours of effort, my interest in this project peaked and rather than keep it to myself, I'm sharing it with others!
 
 ### Built With
 
@@ -81,8 +53,6 @@ This a project that I personally worked on due to bordem in quanrtine. After hou
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 * npm
@@ -115,11 +85,11 @@ npm start
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+<!-- ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+ -->
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 
 
