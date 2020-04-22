@@ -19,7 +19,7 @@ function createWindow () {
   mainWindow.loadFile('index.html')
   mainWindow.setMenu(null)
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 }
 
 app.allowRendererProcessReuse = true
