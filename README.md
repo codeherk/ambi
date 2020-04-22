@@ -144,7 +144,7 @@ Byron Jenkins - [@codeherk](https://twitter.com/codeherk) - codeherk@gmail.com
 [issues-shield]: https://img.shields.io/github/issues/codeherk/ambi.svg?style=flat-square
 [issues-url]: https://github.com/codeherk/ambi/issues
 [license-shield]: https://img.shields.io/github/license/codeherk/ambi.svg?style=flat-square
-[license-url]: https://github.com/codeherk/ambi/blob/master/LICENSE.txt
+[license-url]: https://github.com/codeherk/ambi/blob/master/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/byron-jenkins
 [product-screenshot]: images/screenshot.png
