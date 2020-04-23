@@ -5,24 +5,14 @@
 // selectively enable features needed in the rendering
 // process.
 
-
-// const body = document.getElementsByTagName('body')[0];
-// const red_input = document.getElementById('red_value');
-// const green_input = document.getElementById('green_value');
-// const blue_input = document.getElementById('blue_value');
-// const hex_input = document.getElementById('hex_value');
-// const inputs = [red_input, green_input, blue_input, hex_input];
-
-const {
-    remote
-} = require('electron');
+const { remote } = require('electron');
 const fs = require('fs');
 
 
 let slider; // global so we can add/remove event listeners
 let huejay = require("huejay"); // https://github.com/sqmk/huejay
 let client;
-// let savedSize;
+let colorPicker = null;
 
 var data = {
     lights: false,
@@ -160,7 +150,6 @@ var app = new Vue({
 })
 
 
-let colorPicker = null;
 
 function activateColorPicker() {
     colorPicker = new iro.ColorPicker('#picker', {
@@ -178,14 +167,6 @@ function activateColorPicker() {
     colorPicker.on('color:change', function (color) {
         // if the first color changed
         if (color.index === 0) {
-            // console.log('color 0 changed!');
-            // log the color index and hex value
-            // console.log(color, color.hexString);
-            // console.log(color, color.xy);
-            // red_input.value = color.rgb.r
-            // green_input.value = color.rgb.g
-            // blue_input.value = color.rgb.b
-            // hex_input.value = color.hexString
             let xy = rgb_to_cie(color.rgb.r, color.rgb.g, color.rgb.b);
             // console.log(xy)
             if (data.selected_light.type != "Dimmable light") {
@@ -218,54 +199,6 @@ function activateColorPicker() {
         }
     }
 }
-
-// add event listeners to color inputs 
-// for (let i = 0; i < inputs.length; i++) {
-//     inputs[i].addEventListener("dblclick", function () {
-//         inputs[i].select();
-//         inputs[i].setSelectionRange(0, 99999);
-//         document.execCommand("copy");
-//     });
-// }
-
-//   huejay.discover()
-//   .then(bridges => {
-//     for (let bridge of bridges) {
-//       console.log(`Id: ${bridge.id}, IP: ${bridge.ip}`);
-//     }
-//   })
-//   .catch(error => {
-//     console.log(`An error occurred: ${error.message}`);
-//   });
-
-// CREATE USER
-// created aKXZgV85wJbAfvgfQFp49p9imxG0tjlr7dn0bWC2
-// let user = new client.users.User;
-
-// Optionally configure a device type / agent on the user
-// user.deviceType = 'my_device_type'; // Default is 'huejay'
-
-// client.users.create(user)
-//   .then(user => {
-//     console.log(`New user created - Username: ${user.username}`);
-//   })
-//   .catch(error => {
-//     if (error instanceof huejay.Error && error.type === 101) {
-//       return console.log(`Link button not pressed. Try again...`);
-//     }
-
-//     console.log(error.stack);
-//   });]
-
-// client.users.get().then(user => {
-// data.user = user
-// console.log(user)
-// console.log('Username:', user.username);
-// console.log('Device type:', user.deviceType);
-// console.log('Create date:', user.created);
-// console.log('Last use date:', user.lastUsed);
-// });
-
 
 function fetchLights() {
     data.lights = null
