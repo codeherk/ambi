@@ -57,6 +57,8 @@ header {
 .light-card {
   /* background-color: rgba(255, 255, 255, 0.75); */
   cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
   /* backdrop-filter: blur(2px); */
 }
 
@@ -103,6 +105,8 @@ header {
   /* box-shadow: -100vw 0 0 100vw dodgerblue; */
   /* border: 2px solid #999;*/
   /* 1 */
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 
